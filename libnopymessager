@@ -1,0 +1,32 @@
+Copiar o código abaixo dentro da classe bot que fica na pasta pasta do pymessager (biblioteca que estamos utilizando, verificar onde a sua está salva)
+
+por padrão no linux ela fica em   (/usr/local/lib/python3.6/dist-packages/pymessager )
+
+
+
+
+
+
+def send_location_message(self, recipient_id, text):
+            '''Send text messages to the specified recipient.
+            https://developers.facebook.com/docs/messenger-platform/send-api-reference/button-template
+            Input:
+                recipient_id: recipient id to send to
+                text: text of message to send
+                buttons: buttons to send
+            Output:
+                Response from API as <dict>
+            '''
+
+            payload = {
+                'recipient': {
+                    'id': recipient_id
+                },
+                'message': {
+                    'text': text,
+                    'quick_replies':[{
+                        "content_type":"location"
+                        }]
+                    }
+                }
+            return self.send_raw(payload)
